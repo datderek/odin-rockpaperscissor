@@ -1,20 +1,32 @@
+// Listens for player's move
+const divs = document.querySelectorAll(".choice");
+divs.forEach(div => {
+    div.addEventListener('click', e => {
+        singleRound(getComputerChoice(), e.target.id);
+    })
+});
+
+
 // Track the rock paper scissor game for five rounds
 let playerScore;
 let computerScore;
 
-function game() {
-    playerScore = 0;
-    computerScore = 0;
-    for (let i = 1; i <= 5; i++) {
-        console.log("Round " + i + "...")
-        let computerSelection = getComputerChoice();
-        let playerSelection = getPlayerChoice();
-        console.log(singleRound(computerSelection, playerSelection));
-    }
-    (playerScore > computerScore) ? console.log("You beat the computer!") : console.log("You lost to the computer!");
+// function game() {
+//     playerScore = 0;
+//     computerScore = 0;
+
+//     // Simulates five rounds of rock, paper, scissor
+//     for (let i = 1; i <= 5; i++) {
+//         console.log("Round " + i + "...")
+//         let computerSelection = getComputerChoice();
+//         let playerSelection = getPlayerChoice();
+//         console.log(singleRound(computerSelection, playerSelection));
+//     }
+
+//     // Determines who is the final winner
+//     (playerScore > computerScore) ? console.log("You beat the computer!") : console.log("You lost to the computer!");
     
-}
-// Play a round of rock paper scissors
+// }
 
 // Computer chooses a random move
 function getComputerChoice() {
@@ -48,7 +60,7 @@ function getPlayerChoice() {
 function singleRound(computerSelection, playerSelection) {
     if (playerSelection == "rock") {
         if (computerSelection == "rock") {
-            return "It's a tie!";
+            return "It's a Tie!";
         } else if (computerSelection == "paper") {
             computerScore += 1;
             return "You Lose! Paper beats Rock.";
@@ -61,7 +73,7 @@ function singleRound(computerSelection, playerSelection) {
             playerScore += 1;
             return "You Won! Paper beats Rock";
         } else if (computerSelection == "paper") {
-            return "It's a tie!";
+            return "It's a Tie!";
         } else {
             computerScore += 1;
             return "You Lose! Scissor beats Paper.";
@@ -74,14 +86,10 @@ function singleRound(computerSelection, playerSelection) {
             playerScore += 1;
             return "You Won! Scissor beats Paper.";
         } else {
-            return "It's a tie!";
+            return "It's a Tie!";
         }
     }
 
 
 }
-// Prompt the player to choose
-//     Ensure that input is case-insensitive
-// Return a string of who wins the round
-//     Generate the win message
-// Start the next round
+
