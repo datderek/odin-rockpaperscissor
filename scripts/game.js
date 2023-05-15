@@ -9,20 +9,27 @@ const result = document.querySelector("#result");
 
 // Play the game once the player selects a move.
 divs.forEach(div => {
-    div.addEventListener('click', e => game(e));
+    div.addEventListener('click', game);
 });
 
+// Runs the game and prints the round results
 function game(event) {
     let roundMessage = singleRound(getComputerChoice(), event.target.id);
     if (playerScore == 5 || computerScore == 5) {
-        printWinner();
+        endGame();
     } else {
         printRound(roundMessage);
     }
 }
 
-// Prints the win message
-function printWinner() {
+// Ends the game when there is a winner
+function endGame() {
+    divs.forEach(div => {
+        div.removeEventListener('click', game);
+    });
+
+    playerScore = 0;
+    computerScore = 0;
     score[0].innerText = "";
     score[1].innerText = "";
     result.innerText = (playerScore == 5) ? "You beat the Computer!" : "You lost to the Computer!";
