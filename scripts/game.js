@@ -28,20 +28,6 @@ function getComputerChoice() {
     return choice;
 }
 
-// Prompt the player to choose a move
-function getPlayerChoice() {
-    let playerChoice;
-    let playerChoiceLC;
-    // Prompt the player to choose a move
-    do {
-        playerChoice = prompt("Choose your move!");
-        playerChoiceLC = playerChoice.toLowerCase();
-    } while (!(playerChoiceLC == "rock" || playerChoiceLC == "paper" || playerChoiceLC == "scissor"))
-    
-    return playerChoiceLC;
-}
-
-
 // Simulates a single round of rock paper scissors
 function singleRound(computerSelection, playerSelection) {
     if (playerSelection == "rock") {
