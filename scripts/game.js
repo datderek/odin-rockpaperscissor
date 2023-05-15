@@ -2,17 +2,38 @@
 let playerScore = 0;
 let computerScore = 0;
 
-// Listens for player's move
+// Select elements for message and eventListeners
 const divs = document.querySelectorAll(".choice");
-const score = document.querySelector("#score");
+const score = document.querySelectorAll(".score");
 const result = document.querySelector("#result");
 
+// Play the game once the player selects a move.
 divs.forEach(div => {
-    div.addEventListener('click', e => {
-        result.innerText = singleRound(getComputerChoice(), e.target.id);
-        score.innerText = "Player: " + playerScore + "  Computer: " + computerScore;
-    })
+    div.addEventListener('click', e => game(e));
 });
+
+function game(event) {
+    let roundMessage = singleRound(getComputerChoice(), event.target.id);
+    if (playerScore == 5 || computerScore == 5) {
+        printWinner();
+    } else {
+        printRound(roundMessage);
+    }
+}
+
+// Prints the win message
+function printWinner() {
+    score[0].innerText = "";
+    score[1].innerText = "";
+    result.innerText = (playerScore == 5) ? "You beat the Computer!" : "You lost to the Computer!";
+}
+
+// Prints the round message
+function printRound(roundMessage) {
+    score[0].innerText = "Player: " + playerScore;
+    score[1].innerText = "Computer: " + computerScore;
+    result.innerText = roundMessage;
+}
 
 // Computer chooses a random move
 function getComputerChoice() {
@@ -61,7 +82,5 @@ function singleRound(computerSelection, playerSelection) {
             return "It's a Tie!";
         }
     }
-
-
 }
 
