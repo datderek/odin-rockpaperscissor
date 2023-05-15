@@ -1,32 +1,18 @@
+// Track the rock paper scissor game for five rounds
+let playerScore = 0;
+let computerScore = 0;
+
 // Listens for player's move
 const divs = document.querySelectorAll(".choice");
+const score = document.querySelector("#score");
+const result = document.querySelector("#result");
+
 divs.forEach(div => {
     div.addEventListener('click', e => {
-        singleRound(getComputerChoice(), e.target.id);
+        result.innerText = singleRound(getComputerChoice(), e.target.id);
+        score.innerText = "Player: " + playerScore + "  Computer: " + computerScore;
     })
 });
-
-
-// Track the rock paper scissor game for five rounds
-let playerScore;
-let computerScore;
-
-// function game() {
-//     playerScore = 0;
-//     computerScore = 0;
-
-//     // Simulates five rounds of rock, paper, scissor
-//     for (let i = 1; i <= 5; i++) {
-//         console.log("Round " + i + "...")
-//         let computerSelection = getComputerChoice();
-//         let playerSelection = getPlayerChoice();
-//         console.log(singleRound(computerSelection, playerSelection));
-//     }
-
-//     // Determines who is the final winner
-//     (playerScore > computerScore) ? console.log("You beat the computer!") : console.log("You lost to the computer!");
-    
-// }
 
 // Computer chooses a random move
 function getComputerChoice() {
