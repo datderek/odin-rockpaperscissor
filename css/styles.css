@@ -8,10 +8,10 @@ body {
     font-family: 'Roboto';
     overflow: hidden;
     background-color:#222831;
-    color: #ffc909;
+    color: #FFD369;
 }
 
-.wrapper {
+.intro {
     display: flex;
     justify-content: center;
     margin: 0 auto;
@@ -42,6 +42,10 @@ body {
     animation: text-pop 500ms forwards;
 }
 
+.hide {
+    display: none;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -59,18 +63,30 @@ body {
 }
 
 .container.choices {
-    gap: 10vw;
+    gap: 5vw;
 }
 
-.hide {
-    display: none;
+.choice {
+    height: 200px;
+    width: 200px;
+    color: #EEEEEE;
+    background-color: #393E46;
+    border: 3px solid #191e25;
+    box-shadow: 0 0 40px 10px #191e25;
+    border-radius: 25px;
+    transition: all 500ms ease 0s;
 }
 
+.choice:hover {
+    transform: translateY(-10px) scale(1.05);
+    color: #FFD369;
+    border-color: #FFD369;
+    box-shadow: 0 0 10px #FFD369;
+}
 @keyframes scroll {
     0% {
         transform: rotateX(20deg) translate3d(0, 90rem, 0);
         opacity: 1;
-
     }
     75% {
         opacity: 1;

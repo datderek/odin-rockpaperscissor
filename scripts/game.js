@@ -6,9 +6,12 @@ let computerScore = 0;
 const divs = document.querySelectorAll(".choice");
 const score = document.querySelectorAll(".score");
 const result = document.querySelector("#result");
+
+const intro = document.querySelector(".intro");
+const title = document.querySelector(".title");
 const titleWords = document.querySelectorAll(".title-word");
 
-const intro = document.querySelector("#intro");
+// Animate the introduction sequence
 intro.addEventListener("animationend", () => {
     intro.classList.add("hide")
     titleWords[0].classList.remove("hide")
@@ -28,6 +31,7 @@ titleWords[1].addEventListener("animationend", () => {
 
 titleWords[2].addEventListener("animationend", () => {
     titleWords[2].innerText = "";
+    title.classList.add("hide");
 });
 
 

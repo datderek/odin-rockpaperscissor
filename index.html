@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./scripts/game.js" defer></script>
+    <script src="https://kit.fontawesome.com/5643e0cdcc.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/styles.css">
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <div id="intro" class="wrapper">
+    <div class="intro hide"> <!-- delete hide here -->
         <div class="scroll-text">
             <p>
             In a kitchen far, far away,
@@ -31,22 +32,28 @@
             </p>
         </div>
     </div>
-    <div class="title">
-    <div class="title-word hide">ROCK</div>
-    <div class="title-word hide">PAPER</div>
-    <div class="title-word hide">SCISSORS</div>
+    <div class="title hide"> <!-- delete hide here -->
+        <div class="title-word hide">ROCK</div>
+        <div class="title-word hide">PAPER</div>
+        <div class="title-word hide">SCISSORS</div>
     </div>
-    <!-- <div class = "container column">
-    <div class="container scores">
-        <div class="score"></div>
-        <div class="score"></div>
+    <main class="game">
+    <div class="container column">
+        <div>
+            <p class="game-instruct">Choose your move.</p>
+            <p class="game-message">First to five points wins.</p>
+        </div>
+        <div class="container choices">
+            <div class="choice container" id="rock"><i class="fa-regular fa-hand-back-fist fa-7x"></i></div>
+            <div class="choice container" id="paper"><i class="fa-regular fa-hand fa-7x"></i></div>
+            <div class="choice container" id="scissor"><i class="fa-regular fa-hand-scissors fa-7x"></i></div>
+        </div>
+        <div class="container scores">
+            <div class="score"></div>
+            <div>-</div>
+            <div class="score"></div>
+        </div>
     </div>
-    <div id="result"></div>
-    <div class="container choices">
-        <div class="choice" id="rock">Rock</div>
-        <div class="choice" id="paper">Paper</div>
-        <div class="choice" id="scissor">Scissor</div>
-    </div>
-    </div> -->
+    </main>
 </body>
 </html>
