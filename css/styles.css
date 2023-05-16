@@ -6,20 +6,28 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Roboto';
+    overflow: hidden;
+    background-color:black;
 }
 
 .wrapper {
     display: flex;
     justify-content: center;
+    margin: 0 auto;
+    perspective: 450px;
 }
 
 .scroll-text {
-    width: 40vw;
+    flex: 0 0 50vw;
     color: #ffc909;
+    line-height: 1.5em;
     font-size: 3vw;
     font-weight: bold;
     text-align: justify;
+    position: relative;
+    animation: scroll 35s linear forwards;
 }
+
 .container {
     display: flex;
     justify-content: center;
@@ -28,7 +36,6 @@ body {
 
 .container.column {
     flex-direction: column;
-    background-color: salmon;
     height: 100vh;
     gap: 10vh;
 }
@@ -39,4 +46,15 @@ body {
 
 .container.choices {
     gap: 10vw;
+}
+
+@keyframes scroll {
+    from {
+        transform: rotateX(20deg) translate3d(0, 75rem, 0);
+
+    }
+
+    to {
+        transform: rotateX(20deg) translate3d(0, -150rem, 0);
+    }
 }
