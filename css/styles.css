@@ -58,18 +58,26 @@ body {
     gap: 10vh;
 }
 
+.game-instruct, .game-message {
+    text-align: center;
+}
+
 .container.scores {
     gap: 5vw;
 }
 
 .container.choices {
     gap: 5vw;
+    position: relative;
+    animation: drop .8s ease forwards;
 }
+
+
 
 .choice {
     height: 200px;
     width: 200px;
-    color: #EEEEEE;
+    color: #191e25;
     background-color: #393E46;
     border: 3px solid #191e25;
     box-shadow: 0 0 40px 10px #191e25;
@@ -78,7 +86,7 @@ body {
 }
 
 .choice:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-20px) scale(1.1);
     color: #FFD369;
     border-color: #FFD369;
     box-shadow: 0 0 10px #FFD369;
@@ -101,8 +109,16 @@ body {
 }
 
 @keyframes text-pop {
-    0% {opacity: 0;}
-    1% {opacity: 1;}
-    99%{opacity: 1;}
+    0%  {opacity: 0;}
+    1%  {opacity: 1;}
+    99% {opacity: 1;}
     100%{opacity: 0;}
+}
+
+@keyframes drop {
+    0%  {transform: translateY(-50vh) scaleY(0.9); opacity: 0;}
+    20% {opacity: .7;}
+    60% {transform: translateY(4vh); opacity: 1;}
+    80% {transform: translateY(-2vh);}
+    100% {transform: translateY(0);}
 }
