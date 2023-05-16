@@ -6,6 +6,30 @@ let computerScore = 0;
 const divs = document.querySelectorAll(".choice");
 const score = document.querySelectorAll(".score");
 const result = document.querySelector("#result");
+const titleWords = document.querySelectorAll(".title-word");
+
+const intro = document.querySelector("#intro");
+intro.addEventListener("animationend", () => {
+    intro.classList.add("hide")
+    titleWords[0].classList.remove("hide")
+    titleWords[0].classList.add("show");
+});
+
+titleWords[0].addEventListener("animationend", () => {
+    titleWords[0].innerText = "";
+    titleWords[1].classList.remove("hide")
+    titleWords[1].classList.add("show");
+});
+titleWords[1].addEventListener("animationend", () => {
+    titleWords[1].innerText = "";
+    titleWords[2].classList.remove("hide")
+    titleWords[2].classList.add("show");
+});
+
+titleWords[2].addEventListener("animationend", () => {
+    titleWords[2].innerText = "";
+});
+
 
 // Play the game once the player selects a move.
 divs.forEach(div => {
