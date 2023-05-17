@@ -1,14 +1,15 @@
 // Track the rock paper scissor game for five rounds
 let playerScore = 0;
 let computerScore = 0;
+let roundMessage = "";
+let movesPlayed = "";
 
 // Select elements for message and eventListeners
-const divs = document.querySelectorAll(".choice");
-const score = document.querySelectorAll(".score");
-const result = document.querySelector("#result");
-
+const choices = document.querySelectorAll(".choice");
+const score = document.querySelector(".scores");
+const result = document.querySelector(".game-result");
+const moves = document.querySelector(".game-message");
 const intro = document.querySelector(".intro");
-
 const title = document.querySelector(".title");
 const titleWords = document.querySelectorAll(".title-word");
 
@@ -56,17 +57,18 @@ divs[1].addEventListener("animationend", () => {
 });
 
 // Play the game once the player selects a move.
-divs.forEach(div => {
-    div.addEventListener('click', game);
+choices.forEach(choice => {
+    choice.addEventListener('click', game);
 });
 
 // Runs the game and prints the round results
 function game(event) {
-    let roundMessage = singleRound(getComputerChoice(), event.target.id);
+    singleRound(getComputerChoice(), event.currentTarget.id);
     if (playerScore == 5 || computerScore == 5) {
         endGame();
+        playAgain();
     } else {
-        printRound(roundMessage);
+        printResults();
     }
 }
 
@@ -75,19 +77,21 @@ function endGame() {
     divs.forEach(div => {
         div.removeEventListener('click', game);
     });
-
+    result.innerText = (playerScore == 5) ? "You won!" : "You lost!";
+    moves.innerText = (playerScore == 5) ? "Sit back and relax." : "Better figure out what's for dinner.";
     playerScore = 0;
     computerScore = 0;
-    score[0].innerText = "";
-    score[1].innerText = "";
-    result.innerText = (playerScore == 5) ? "You beat the Computer!" : "You lost to the Computer!";
+}
+
+// Generates the play again button
+function playAgain() {
+
 }
 
 // Prints the round message
-function printRound(roundMessage) {
-    score[0].innerText = "Player: " + playerScore;
-    score[1].innerText = "Computer: " + computerScore;
+function printResults() {
     result.innerText = roundMessage;
+    moves.innerText = movesPlayed;
 }
 
 // Computer chooses a random move
@@ -106,36 +110,56 @@ function getComputerChoice() {
 
 // Simulates a single round of rock paper scissors
 function singleRound(computerSelection, playerSelection) {
+    const dot = document.createElement("div");
     if (playerSelection == "rock") {
         if (computerSelection == "rock") {
-            return "It's a Tie!";
+            roundMessage = "It's a Tie!";
+            movesPlayed = "You both chose Rock";
+            dot.classList.add("dot", "tie");
         } else if (computerSelection == "paper") {
             computerScore += 1;
-            return "You Lose! Paper beats Rock.";
+            roundMessage = "You Lose!";
+            movesPlayed = "Paper beats Rock";
+            dot.classList.add("dot", "lose");
         } else {
             playerScore += 1;
-            return "You Won! Rock beats Scissor.";
+            roundMessage = "You Won!";
+            movesPlayed = "Rock beats Scissors";
+            dot.classList.add("dot", "win");
         }
     } else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
             playerScore += 1;
-            return "You Won! Paper beats Rock";
+            roundMessage = "You Won!";
+            movesPlayed = "Paper beats Rock";
+            dot.classList.add("dot", "win");
         } else if (computerSelection == "paper") {
-            return "It's a Tie!";
+            roundMessage = "It's a Tie!";
+            movesPlayed = "You both chose Paper";
+            dot.classList.add("dot", "tie");
         } else {
             computerScore += 1;
-            return "You Lose! Scissor beats Paper.";
+            roundMessage = "You Lose!";
+            movesPlayed = "Scissors beats Paper";
+            dot.classList.add("dot", "lose");
         }
     } else {
         if (computerSelection == "rock") {
             computerScore += 1;
-            return "You Lose! Rock beats Scissor.";
+            roundMessage = "You Lose!";
+            movesPlayed = "Rock beats Scissors";
+            dot.classList.add("dot", "lose");
         } else if (computerSelection == "paper") {
             playerScore += 1;
-            return "You Won! Scissor beats Paper.";
+            roundMessage = "You Won!";
+            movesPlayed = "Scissors beats Paper";
+            dot.classList.add("dot", "win");
         } else {
-            return "It's a Tie!";
+            roundMessage = "It's a Tie!";
+            movesPlayed = "You both chose Scissors";
+            dot.classList.add("dot", "tie");
         }
     }
+    score.appendChild(dot);
 }
 

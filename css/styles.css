@@ -81,7 +81,8 @@ body {
 }
 
 .container.scores {
-    gap: 5vw;
+    height: 30px;
+    gap: 1vw;
 }
 
 .container.choices {
@@ -95,6 +96,25 @@ body {
 .choice.show {
     animation: drop .8s ease forwards;
 }
+
+.dot{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+}
+
+.dot.win {
+    background-color: #FFD369;
+}
+
+.dot.lose {
+    background-color: #191e25;
+}
+
+.dot.tie {
+    background-color: #393E46;
+}
+
 
 .choice {
     height: 200px;
@@ -113,6 +133,7 @@ body {
     border-color: #FFD369;
     box-shadow: 0 0 10px #FFD369;
 }
+
 @keyframes scroll {
     0% {
         transform: rotateX(20deg) translate3d(0, 90rem, 0);
