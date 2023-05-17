@@ -8,32 +8,52 @@ const score = document.querySelectorAll(".score");
 const result = document.querySelector("#result");
 
 const intro = document.querySelector(".intro");
+
 const title = document.querySelector(".title");
 const titleWords = document.querySelectorAll(".title-word");
 
+const message = document.querySelectorAll("#message > p");
+
 // Animate the introduction sequence
 intro.addEventListener("animationend", () => {
-    intro.classList.add("hide")
-    titleWords[0].classList.remove("hide")
+    intro.classList.add("hide");
+    titleWords[0].classList.remove("hide");
     titleWords[0].classList.add("show");
 });
 
 titleWords[0].addEventListener("animationend", () => {
     titleWords[0].innerText = "";
-    titleWords[1].classList.remove("hide")
+    titleWords[1].classList.remove("hide");
     titleWords[1].classList.add("show");
 });
+
 titleWords[1].addEventListener("animationend", () => {
     titleWords[1].innerText = "";
-    titleWords[2].classList.remove("hide")
+    titleWords[2].classList.remove("hide");
     titleWords[2].classList.add("show");
 });
 
 titleWords[2].addEventListener("animationend", () => {
     titleWords[2].innerText = "";
     title.classList.add("hide");
+    message[0].classList.add("show");
 });
 
+// Animate the game board sequence
+message[0].addEventListener("animationend", () => {
+    message[1].classList.add("show");
+});
+
+message[1].addEventListener("animationend", () => {
+    divs[0].classList.add("show");
+});
+divs[0].addEventListener("animationend", () => {
+    divs[1].classList.add("show");
+});
+
+divs[1].addEventListener("animationend", () => {
+    divs[2].classList.add("show");
+});
 
 // Play the game once the player selects a move.
 divs.forEach(div => {

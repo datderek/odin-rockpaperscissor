@@ -34,12 +34,12 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 43vh;
+    font-size: 40vh;
 }
 
 .title-word.show {
     display: flex;
-    animation: text-pop 500ms forwards;
+    animation: text-pop 1s forwards;
 }
 
 .hide {
@@ -58,17 +58,25 @@ body {
     gap: 10vh;
 }
 
-.game-instruct, .game-message {
+.game-result, .game-message {
     text-align: center;
 }
 
-.game-instruct {
-    font-size: 3.5rem;
-    animation: fadeIn 2s ease forwards;
+.game-result {
+    font-size: 4rem;
+    opacity: 0;
+}
+
+.game-result.show {
+    animation: fadeIn 2s ease 1.5s forwards;
 }
 
 .game-message {
-    font-size: 2rem;
+    font-size: 3rem;
+    opacity: 0;
+}
+
+.game-message.show {
     animation: fadeIn 2s ease forwards;
 }
 
@@ -78,11 +86,15 @@ body {
 
 .container.choices {
     gap: 5vw;
-    position: relative;
-    animation: drop .8s ease forwards;
 }
 
+.choice {
+    opacity: 0;
+}
 
+.choice.show {
+    animation: drop .8s ease forwards;
+}
 
 .choice {
     height: 200px;
@@ -138,6 +150,6 @@ body {
     0%  {transform: translateY(-50vh) scaleY(0.9); opacity: 0;}
     20% {opacity: .7;}
     60% {transform: translateY(4vh); opacity: 1;}
-    80% {transform: translateY(-2vh);}
-    100% {transform: translateY(0);}
+    80% {transform: translateY(-2vh); opacity: 1;}
+    100% {transform: translateY(0); opacity: 1;}
 }
