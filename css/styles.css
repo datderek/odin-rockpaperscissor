@@ -62,6 +62,16 @@ body {
     text-align: center;
 }
 
+.game-instruct {
+    font-size: 3.5rem;
+    animation: fadeIn 2s ease forwards;
+}
+
+.game-message {
+    font-size: 2rem;
+    animation: fadeIn 2s ease forwards;
+}
+
 .container.scores {
     gap: 5vw;
 }
@@ -113,6 +123,15 @@ body {
     1%  {opacity: 1;}
     99% {opacity: 1;}
     100%{opacity: 0;}
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes drop {
