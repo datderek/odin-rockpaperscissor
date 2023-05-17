@@ -5,33 +5,32 @@ let roundMessage = "";
 let movesPlayed = "";
 
 // Select elements for message and eventListeners
-const choices = document.querySelectorAll(".choice");
+const choiceWrapper = document.querySelector(".choices");
+const choiceButtons = document.querySelectorAll(".choice");
 const score = document.querySelector(".scores");
 const result = document.querySelector(".game-result");
 const moves = document.querySelector(".game-message");
 const intro = document.querySelector(".intro");
 const title = document.querySelector(".title");
 const titleWords = document.querySelectorAll(".title-word");
+const playButton = document.querySelector(".playButton");
 
 const message = document.querySelectorAll("#message > p");
 
 // Animate the introduction sequence
 intro.addEventListener("animationend", () => {
     intro.classList.add("hide");
-    titleWords[0].classList.remove("hide");
-    titleWords[0].classList.add("show");
+    titleWords[0].classList.replace("hide", "show");
 });
 
 titleWords[0].addEventListener("animationend", () => {
     titleWords[0].innerText = "";
-    titleWords[1].classList.remove("hide");
-    titleWords[1].classList.add("show");
+    titleWords[1].classList.replace("hide", "show");
 });
 
 titleWords[1].addEventListener("animationend", () => {
     titleWords[1].innerText = "";
-    titleWords[2].classList.remove("hide");
-    titleWords[2].classList.add("show");
+    titleWords[2].classList.replace("hide", "show");
 });
 
 titleWords[2].addEventListener("animationend", () => {
@@ -46,18 +45,19 @@ message[0].addEventListener("animationend", () => {
 });
 
 message[1].addEventListener("animationend", () => {
-    divs[0].classList.add("show");
-});
-divs[0].addEventListener("animationend", () => {
-    divs[1].classList.add("show");
+    choiceButtons[0].classList.add("show");
 });
 
-divs[1].addEventListener("animationend", () => {
-    divs[2].classList.add("show");
+choiceButtons[0].addEventListener("animationend", () => {
+    choiceButtons[1].classList.add("show");
+});
+
+choiceButtons[1].addEventListener("animationend", () => {
+    choiceButtons[2].classList.add("show");
 });
 
 // Play the game once the player selects a move.
-choices.forEach(choice => {
+choiceButtons.forEach(choice => {
     choice.addEventListener('click', game);
 });
 
@@ -66,7 +66,7 @@ function game(event) {
     singleRound(getComputerChoice(), event.currentTarget.id);
     if (playerScore == 5 || computerScore == 5) {
         endGame();
-        playAgain();
+        createPlayButton();
     } else {
         printResults();
     }
@@ -74,18 +74,32 @@ function game(event) {
 
 // Ends the game when there is a winner
 function endGame() {
-    divs.forEach(div => {
-        div.removeEventListener('click', game);
+    choiceButtons.forEach(choice => {
+        choice.removeEventListener('click', game);
     });
     result.innerText = (playerScore == 5) ? "You won!" : "You lost!";
     moves.innerText = (playerScore == 5) ? "Sit back and relax." : "Better figure out what's for dinner.";
-    playerScore = 0;
-    computerScore = 0;
 }
 
 // Generates the play again button
-function playAgain() {
+function createPlayButton() {
+    choiceWrapper.classList.add("hide");
+    playButton.classList.replace("hide", "show");
+    playButton.addEventListener("click", resetGame);
+}
 
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
+    result.innerText = "First to five points wins";
+    message.innerText = "Choose your move";
+    score.innerHTML = "";
+    choiceWrapper.classList.remove("hide");
+    playButton.classList.replace("show", "hide");
+    choiceButtons.forEach(choice => {
+        choice.addEventListener('click', game);
+    });
+    playButton.removeEventListener("click", resetGame);
 }
 
 // Prints the round message

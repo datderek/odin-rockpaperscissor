@@ -34,7 +34,7 @@ body {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    font-size: 40vh;
+    font-size: 35vh;
 }
 
 .title-word.show {
@@ -80,21 +80,76 @@ body {
     animation: fadeIn 2s ease forwards;
 }
 
-.container.scores {
-    height: 30px;
-    gap: 1vw;
-}
-
-.container.choices {
+.choices {
     gap: 5vw;
 }
 
+.choices.hide {
+    display: none;
+}
+
+.choices.fadeOut {
+    animation: fadeOut 2s ease forwards;
+}
+
+.choices.fadeIn {
+    animation: fadeIn 2s ease 1s forwards;
+}
+
 .choice {
+    height: 200px;
+    width: 200px;
     opacity: 0;
+    color: #191e25;
+    background-color: #393E46;
+    border: 3px solid #191e25;
+    border-radius: 25px;
+    box-shadow: 0 0 40px 10px #191e25;
+    transition: all 500ms ease 0s;
 }
 
 .choice.show {
     animation: drop .8s ease forwards;
+}
+
+.button:hover, .choice:hover {
+    transform: translateY(-20px) scale(1.1);
+    color: #FFD369;
+    border-color: #FFD369;
+    box-shadow: 0 0 10px #FFD369;
+}
+
+.playButton {
+    opacity: 0;
+    height: 206px; 
+}
+
+.playButton.show {
+    animation: fadeIn 1s linear 1s forwards;
+}
+
+.playButton.fadeOut {
+    animation: fadeOut 1s linear 1s forwards;
+}
+
+.playButton.hide {
+    display: none;
+}
+
+.button {
+    font-size: 2.5rem;
+    padding: 15px 35px;
+    color: #191e25;
+    background-color: #393E46;
+    border: 3px solid #191e25;
+    border-radius: 25px;
+    box-shadow: 0 0 40px 10px #191e25;
+    transition: all 500ms ease 0s;
+}
+
+.scores {
+    height: 30px;
+    gap: 1vw;
 }
 
 .dot{
@@ -115,24 +170,6 @@ body {
     background-color: #393E46;
 }
 
-
-.choice {
-    height: 200px;
-    width: 200px;
-    color: #191e25;
-    background-color: #393E46;
-    border: 3px solid #191e25;
-    box-shadow: 0 0 40px 10px #191e25;
-    border-radius: 25px;
-    transition: all 500ms ease 0s;
-}
-
-.choice:hover {
-    transform: translateY(-20px) scale(1.1);
-    color: #FFD369;
-    border-color: #FFD369;
-    box-shadow: 0 0 10px #FFD369;
-}
 
 @keyframes scroll {
     0% {
@@ -164,6 +201,15 @@ body {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
 
