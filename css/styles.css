@@ -84,15 +84,9 @@ body {
     gap: 5vw;
 }
 
-/*
 .choices.fadeOut {
-    animation: fadeOut 2s ease forwards;
+    animation: fadeOut 2s ease;
 }
-
-.choices.fadeIn {
-    animation: fadeIn 2s ease 1s forwards;
-}
-*/
 
 .choice, .button {
     color: #191e25;

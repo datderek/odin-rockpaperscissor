@@ -23,11 +23,13 @@ function game(event) {
     let computerChoice = getComputerChoice();
     let playerChoice = event.currentTarget.id;
     let result = singleRound(computerChoice, playerChoice);
+    generateResults(result, computerChoice, playerChoice)
     if (playerScore == 5 || computerScore == 5) {
         endGame();
         createPlayButton();
     } else {
-        printResults(result, computerChoice, playerChoice);
+        message[0].innerText = roundMessage;
+        message[1].innerText = movesPlayed;
     }
 }
 
@@ -60,7 +62,7 @@ function singleRound(computerSelection, playerSelection) {
 }
 
 // Prints the round message
-function printResults(result, computerChoice, playerChoice) {
+function generateResults(result, computerChoice, playerChoice) {
     const dot = document.createElement("div");
     if (result == 0) {
         roundMessage = "It's a Tie";
@@ -95,8 +97,6 @@ function printResults(result, computerChoice, playerChoice) {
         movesPlayed = `${computerChoice} beats ${playerChoice}`;
         dot.classList.add("dot", "lose");
     }
-    message[0].innerText = roundMessage;
-    message[1].innerText = movesPlayed;
     score.appendChild(dot);
 }
 
