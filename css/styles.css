@@ -11,8 +11,23 @@ body {
     color: #FFD369;
 }
 
-.intro {
+.hide {
+    display: none;
+}
+
+.container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container.hide {
+    display: none;
+}
+
+#intro.show {
+    display: flex;
+    width: 50vw;
     justify-content: center;
     margin: 0 auto;
     perspective: 450px;
@@ -28,31 +43,17 @@ body {
     animation: scroll 26s linear forwards;
 }
 
-.title {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 35vh;
-}
-
 .title-word.show {
+    height: 100vh;
+    font-size: 30vh;
+    font-weight: bold;
     display: flex;
+    align-items: center;
+    justify-content: center;
     animation: text-pop 1s forwards;
 }
 
-.hide {
-    display: none;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container.column {
+#game.container {
     flex-direction: column;
     height: 100vh;
     gap: 10vh;
@@ -60,34 +61,30 @@ body {
 
 .game-result, .game-message {
     text-align: center;
+    opacity: 0;
 }
 
 .game-result {
     font-size: 4rem;
-    opacity: 0;
+}
+
+.game-message {
+    font-size: 3rem;
 }
 
 .game-result.show {
     animation: fadeIn 2s ease 1.5s forwards;
 }
 
-.game-message {
-    font-size: 3rem;
-    opacity: 0;
-}
-
 .game-message.show {
     animation: fadeIn 2s ease forwards;
 }
 
-.choices {
+.choices.show {
     gap: 5vw;
 }
 
-.choices.hide {
-    display: none;
-}
-
+/*
 .choices.fadeOut {
     animation: fadeOut 2s ease forwards;
 }
@@ -95,18 +92,23 @@ body {
 .choices.fadeIn {
     animation: fadeIn 2s ease 1s forwards;
 }
+*/
+
+.choice, .button {
+    color: #191e25;
+    background-color: #393E46;
+    border: 3px solid #191e25;
+    border-radius: 25px;
+    transition: all 500ms ease 0s;
+}
 
 .choice {
     height: 200px;
     width: 200px;
     opacity: 0;
-    color: #191e25;
-    background-color: #393E46;
-    border: 3px solid #191e25;
-    border-radius: 25px;
     box-shadow: 0 0 40px 10px #191e25;
-    transition: all 500ms ease 0s;
 }
+
 
 .choice.show {
     animation: drop .8s ease forwards;
@@ -119,32 +121,24 @@ body {
     box-shadow: 0 0 10px #FFD369;
 }
 
-.playButton {
+.playButton.show {
     opacity: 0;
     height: 206px; 
-}
-
-.playButton.show {
     animation: fadeIn 1s linear 1s forwards;
 }
+
+/*
 
 .playButton.fadeOut {
     animation: fadeOut 1s linear 1s forwards;
 }
 
-.playButton.hide {
-    display: none;
-}
+*/
 
 .button {
     font-size: 2.5rem;
     padding: 15px 35px;
-    color: #191e25;
-    background-color: #393E46;
-    border: 3px solid #191e25;
-    border-radius: 25px;
-    box-shadow: 0 0 40px 10px #191e25;
-    transition: all 500ms ease 0s;
+    box-shadow: 0 0 20px 5px #191e25;
 }
 
 .scores {

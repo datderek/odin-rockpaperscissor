@@ -10,7 +10,7 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <div class="intro show"> <!-- delete hide here -->
+    <div id="intro" class="hide">
         <div class="scroll-text">
             <p>
             In a kitchen far, far away,
@@ -32,18 +32,15 @@
             </p>
         </div>
     </div>
-    <div class="title"> <!-- delete hide here -->
-        <div class="title-word hide">ROCK</div>
-        <div class="title-word hide">PAPER</div>
-        <div class="title-word hide">SCISSORS</div>
-    </div>
-    <main class="game">
-    <div class="container column">
+    <div class="title-word show">ROCK</div>
+    <div class="title-word hide">PAPER</div>
+    <div class="title-word hide">SCISSORS</div>
+    <main id="game" class="container">
         <div id="message">
             <p class="game-result">First to five points wins</p>
             <p class="game-message">Choose your move</p>
         </div>
-        <div class="container choices">
+        <div class="container choices show">
             <div class="container choice" id="rock"><i class="fa-regular fa-hand-back-fist fa-7x"></i></div>
             <div class="container choice" id="paper"><i class="fa-regular fa-hand fa-7x"></i></div>
             <div class="container choice" id="scissor"><i class="fa-regular fa-hand-scissors fa-7x"></i></div>
@@ -53,7 +50,6 @@
         </div>
         <div class="container scores"></div>
         </div>
-    </div>
     </main>
 </body>
 </html>
