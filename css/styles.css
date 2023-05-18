@@ -109,16 +109,15 @@ body {
     box-shadow: 0 0 40px 10px #191e25;
 }
 
-
 .choice.show {
     animation: drop .8s ease forwards;
 }
 
 .button:hover, .choice:hover {
-    transform: translateY(-20px) scale(1.1);
     color: #FFD369;
     border-color: #FFD369;
     box-shadow: 0 0 10px #FFD369;
+    transform: translateY(-20px) scale(1.1);
 }
 
 .playButton.show {
