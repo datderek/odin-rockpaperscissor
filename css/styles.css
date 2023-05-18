@@ -85,7 +85,8 @@ body {
 }
 
 .choices.fadeOut {
-    animation: fadeOut 2s ease;
+    gap: 5vw;
+    animation: fadeOut 1s ease;
 }
 
 .choice, .button {
@@ -118,16 +119,8 @@ body {
 .playButton.show {
     opacity: 0;
     height: 206px; 
-    animation: fadeIn 1s linear 1s forwards;
+    animation: fadeIn 1s linear 500ms forwards;
 }
-
-/*
-
-.playButton.fadeOut {
-    animation: fadeOut 1s linear 1s forwards;
-}
-
-*/
 
 .button {
     font-size: 2.5rem;

@@ -26,7 +26,7 @@ function game(event) {
     generateResults(result, computerChoice, playerChoice)
     if (playerScore == 5 || computerScore == 5) {
         endGame();
-        createPlayButton();
+        generatePlayButton();
     } else {
         message[0].innerText = roundMessage;
         message[1].innerText = movesPlayed;
@@ -110,25 +110,32 @@ function endGame() {
 }
 
 // Generates the play again button
-function createPlayButton() {
-    choiceWrapper.classList.replace("show", "hide");
-    playButton.classList.replace("hide", "show");
+function generatePlayButton() {
+    
+    function fadeAndCreate() {
+        choiceWrapper.classList.replace("fadeOut", "hide");
+        playButton.classList.replace("hide", "show");
+        choiceWrapper.removeEventListener("animationend", fadeAndCreate)
+    }
+
+    function resetGame() {
+        playerScore = 0;
+        computerScore = 0;
+        message[0].innerText = "First to five points wins";
+        message[1].innerText = "Choose your move";
+        score.innerHTML = "";
+    
+        choiceWrapper.classList.replace("hide", "show");
+        playButton.classList.replace("show", "hide");
+        choiceButtons.forEach(choice => {
+            choice.addEventListener('click', game);
+        });
+        playButton.removeEventListener("click", resetGame);
+    }
+
+    choiceWrapper.classList.replace("show", "fadeOut");
+    choiceWrapper.addEventListener("animationend", fadeAndCreate);
     playButton.addEventListener("click", resetGame);
-}
-
-function resetGame() {
-    playerScore = 0;
-    computerScore = 0;
-    message[0].innerText = "First to five points wins";
-    message[1].innerText = "Choose your move";
-    score.innerHTML = "";
-
-    choiceWrapper.classList.replace("hide", "show");
-    playButton.classList.replace("show", "hide");
-    choiceButtons.forEach(choice => {
-        choice.addEventListener('click', game);
-    });
-    playButton.removeEventListener("click", resetGame);
 }
 
 // Animate the introduction sequence
